@@ -1,0 +1,52 @@
+.home-Conatiner
+{
+    border: 2px solid white;
+    padding: 0.5rem 1rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: #000;
+}
+hr{
+    width: 100%;
+    margin-top: 6%;
+}
+.home-Conatiner h2,.home-Conatiner p{
+    margin: 0 ;
+}
+.toDo-Main-Conatiner{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.toDo-Conatiner{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.toDo-Conatiner-buttons{
+   display: flex;
+   gap: 1rem;
+   padding: 0.3rem 0.5rem;
+} 
+.toDo-Conatiner-buttons button{
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+}
+.active{
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+}
+.active button{
+    padding: 0.3rem 0.5rem;
+    width: max-content;
+    align-items: center;
+}
+.closed {
+    display: none;
+}
+button{
+    background-color: rgba(255, 255, 255, 0.198);
+}
