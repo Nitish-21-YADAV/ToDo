@@ -50,3 +50,11 @@ hr{
 button{
     background-color: rgba(255, 255, 255, 0.198);
 }
+.markDone{
+    color: white;
+}
+.markNotDone{
+    text-decoration: line-through;
+    color: rgb(255, 255, 255);
+    
+}

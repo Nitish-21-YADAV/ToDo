@@ -5,12 +5,9 @@ function Home() {
     const [data, setData] = useState("")
     const [addOption, setAddOption] = useState([])
     const [isSubmit, setIsSubmit] = useState(true)
-
-    // useEffect((
-    //         setIsSubmit(false)
-    // ),[])
+   const[trackDone,setTrackDone]=useState(false)
     const addToDo = () => {
-        setAddOption([...addOption, data])
+        setAddOption([...addOption, {work:data,isDone:false}])
         setData("")
         setIsSubmit(true)
     }
@@ -23,6 +20,16 @@ function Home() {
         setIsSubmit(false)
     }
 
+    function handleDone(index) {
+        setAddOption((prev)=>
+            prev.map((todo,i)=>(
+                i===index ? {...todo,isDone:!todo.isDone}:todo
+            ))
+        )
+        
+
+    }
+
     return (
         <div className='home-Main-Conatiner'>
             <div className="home-Conatiner">
@@ -30,23 +37,26 @@ function Home() {
                 <p>Manage Your Work</p>
                 <hr />
                 <div className="toDo-Main-Conatiner">
-                    {addOption.map((task,index) => (
+                    {addOption.map((task, index) => (
                         <div className="toDo-Conatiner" key={index}>
-                            {task}
+                            <span className={task.isDone===true ? 'markNotDone':'markDone'}>{task.work}</span>
                             <div className="toDo-Conatiner-buttons">
-                            <button onClick={()=>{setIsSubmit(true)}}>+</button>
-                            <button onClick={() => { removeToDo(index) }}>X</button>
+                                <button onClick={() => { setIsSubmit(true) }}>+</button>
+                                <button onClick={() => { removeToDo(index) }}>X</button>
+                                <button onClick={() => handleDone(index)} 
+                                >✓</button>
                             </div>
                         </div>
                     ))}
-                    <div className={isSubmit===true?'active':'closed'}>
+                    <div className={isSubmit === true ? 'active' : 'closed'}>
                         <input placeholder='Your Task' value={data} onChange={(event) => { setData(event.target.value) }} />
                         <button onClick={addToDo}>+</button>
-                        <button onClick={()=>setData("")}>X</button>
+                        <button onClick={() => setData("")}>X</button>
+
                     </div>
                     <button onClick={handleSubmit}
-                    style={{width:"max-content",margin:"0 auto"}}
-                        className={isSubmit===true?'active':'closed'}
+                        style={{ width: "max-content", margin: "0 auto" }}
+                        className={isSubmit === true ? 'active' : 'closed'}
                     >Submit</button>
                 </div>
             </div>
